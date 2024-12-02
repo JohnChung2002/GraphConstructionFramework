@@ -1,0 +1,43 @@
+
+logon Validation/Test Report:
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00     53797
+           1       0.00      0.00      0.00        35
+
+    accuracy                           1.00     53832
+   macro avg       0.50      0.50      0.50     53832
+weighted avg       1.00      1.00      1.00     53832
+
+
+device Validation/Test Report:
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00     26056
+           1       0.01      1.00      0.01       188
+
+    accuracy                           0.01     26244
+   macro avg       0.00      0.50      0.01     26244
+weighted avg       0.00      0.01      0.00     26244
+
+
+http Validation/Test Report:
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00   1780340
+           1       0.00      1.00      0.00       724
+
+    accuracy                           0.00   1781064
+   macro avg       0.00      0.50      0.00   1781064
+weighted avg       0.00      0.00      0.00   1781064
+
+
+file Validation/Test Report:
+              precision    recall  f1-score   support
+
+           0       1.00      0.11      0.20     28206
+           1       0.00      0.50      0.00         2
+
+    accuracy                           0.11     28208
+   macro avg       0.50      0.31      0.10     28208
+weighted avg       1.00      0.11      0.20     28208

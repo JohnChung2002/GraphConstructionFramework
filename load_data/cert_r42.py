@@ -16,6 +16,8 @@ type can be (csv, pickle, feather)
 def load_data(data_info: dict):
     data = {}
     for key, value in data_info.items():
+        if key == 'answers':
+            continue
         if value['type'] == 'feather':
             with open(value['path'], 'rb') as f:
                 data[key] = feather.read_feather(f)
@@ -24,6 +26,7 @@ def load_data(data_info: dict):
         if value['type'] == 'pickle':
             with open(value['path'], 'rb') as f:
                 data[key] = pickle.load(f)
+    data["answers"] = load_answers(data_info['answers'])
     return data
 
 def process_answers_row(row):

@@ -4,7 +4,8 @@ from datetime import datetime, timedelta
 import nltk 
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from pandarallel import pandarallel
-pandarallel.initialize()
+
+pandarallel.initialize(progress_bar=True)
 
 if "/fred/oz382/nltk" not in nltk.data.path:
     nltk.data.path.append("/fred/oz382/nltk")
@@ -87,40 +88,18 @@ def get_sentiment(text):
     sentiment = 0 if (scores['neg'] > scores['neu'] and scores['neg'] > scores['pos']) else 1
     return sentiment
 
-def preprocess_data(data: dict, answers: pd.DataFrame, start_date: datetime, end_date: datetime):
-    users = pd.concat([data[log_type]["user"] for log_type in data]).unique()
-    pcs = pd.concat([data[log_type]["pc"] for log_type in data]).unique()
-
-    data["file"]["sentiment"] = data["file"]["content"].parallel_apply(get_sentiment)
-    data["file"]["filetype"] = data["file"]["filename"].parallel_apply(lambda x: x.split(".")[-1])
-    data["http"]["domain"] = data["http"]["url"].str.split("/").str[2]
-    data["http"]["sentiment"] = data["http"]["content"].parallel_apply(get_sentiment)
-    data["http"]["keylog"] = data["http"]['content'].str.lower().str.contains('keylog')
-    data["http"]["keylog"] = data["http"]["keylog"].astype(int)
-
-    logon_activity = data["logon"]["activity"].unique()
-    device_activity = data["device"]["activity"].unique()
-    filenames = data["file"]["filename"].unique()
-    filetypes = data["file"]["filetype"].unique()
-    domains = data["http"]["domain"].unique()
-
-    encodings = {
-        "type": {key: i for key, i in enumerate(data.keys())},
-        "user": {user: i for i, user in enumerate(users)},
-        "pc": {pc: i for i, pc in enumerate(pcs)},
-        "logon_activity": {activity: i for i, activity in enumerate(logon_activity)},
-        "device_activity": {activity: i for i, activity in enumerate(device_activity)},
-        "filename": {filename: i for i, filename in enumerate(filenames)},
-        "filetype": {filetype: i for i, filetype in enumerate(filetypes)},
-        "domain": {domain: i for i, domain in enumerate(domains)}
-    }
-
-    month_answers = answers[(answers['date'] >= start_date) & (answers['date'] < end_date)].reset_index(drop=True)
-
+def preprocess_data_month(data: dict, start_date: datetime, end_date: datetime):
     new_data = {}
     x_data = {}
     y_data = {}
-    for key in encodings["type"].keys():
+
+    to_remove = ["answers"]
+    log_types = [log for log in data.keys() if log not in to_remove]
+
+    month_answers = data["answers"][(data["answers"]['date'] >= start_date) & (data["answers"]['date'] < end_date)].reset_index(drop=True)
+
+    for key in log_types:
+        data[key]['date'] = pd.to_datetime(data[key]['date'], format="%m/%d/%Y %H:%M:%S")
         new_data[key] = data[key][(data[key]['date'] >= start_date) & (data[key]['date'] < end_date)].reset_index(drop=True)
         merged_data = new_data[key].merge(month_answers[['id', 'log_type']], on='id', how='left')
         new_data[key]['label'] = (merged_data['log_type'] == key)
@@ -130,11 +109,38 @@ def preprocess_data(data: dict, answers: pd.DataFrame, start_date: datetime, end
         x_data[key] = []
         y_data[key] = []
 
+    users = pd.concat([new_data[log_type]["user"] for log_type in new_data]).unique()
+    pcs = pd.concat([new_data[log_type]["pc"] for log_type in new_data]).unique()
+
+    new_data["file"]["sentiment"] = new_data["file"]["content"].parallel_apply(get_sentiment)
+    new_data["file"]["filetype"] = new_data["file"]["filename"].parallel_apply(lambda x: x.split(".")[-1])
+    new_data["http"]["domain"] = new_data["http"]["url"].str.split("/").str[2]
+    new_data["http"]["sentiment"] = new_data["http"]["content"].parallel_apply(get_sentiment)
+    new_data["http"]["keylog"] = new_data["http"]['content'].str.lower().str.contains('keylog')
+    new_data["http"]["keylog"] = new_data["http"]["keylog"].astype(int)
+
+    logon_activity = new_data["logon"]["activity"].unique()
+    device_activity = new_data["device"]["activity"].unique()
+    filenames = new_data["file"]["filename"].unique()
+    filetypes = new_data["file"]["filetype"].unique()
+    domains = new_data["http"]["domain"].unique()
+
+    encodings = {
+        "type": {key: i for key, i in enumerate(log_types)},
+        "user": {user: i for i, user in enumerate(users)},
+        "pc": {pc: i for i, pc in enumerate(pcs)},
+        "logon_activity": {activity: i for i, activity in enumerate(logon_activity)},
+        "device_activity": {activity: i for i, activity in enumerate(device_activity)},
+        "filename": {filename: i for i, filename in enumerate(filenames)},
+        "filetype": {filetype: i for i, filetype in enumerate(filetypes)},
+        "domain": {domain: i for i, domain in enumerate(domains)}
+    }
+
     reverse_encodings = {}
     for key in encodings.keys():
         reverse_encodings[key] = {v: k for k, v in encodings[key].items()}
 
-    for key in encodings["type"].keys():
+    for key in log_types:
         process_log_type(key, new_data[key], x_data, y_data, encodings)
 
     sorted_date_dict = {
@@ -162,5 +168,22 @@ def preprocess_data(data: dict, answers: pd.DataFrame, start_date: datetime, end
         "reverse_encodings": reverse_encodings,
         "chronological_df": chronological_df
     }
+
+def preprocess_data(data: dict):
+    start_date = [datetime(2010, 7, 1, 0, 0, 0), datetime(2010, 8, 1, 0, 0, 0)] # can be single datetime as well
+    end_date = [datetime(2010, 8, 1, 0, 0, 0), datetime(2010, 9, 1, 0, 0, 0)] # can be single datetime as well
+    if isinstance(start_date, list):
+        processed_data = []
+        for i in range(len(start_date)):
+            new_data = preprocess_data_month(data, start_date[i], end_date[i])
+            new_data["start_date"] = start_date[i]
+            new_data["end_date"] = end_date[i]
+            processed_data.append(new_data)
+        return processed_data
+    else:
+        new_data = preprocess_data_month(data, start_date, end_date)
+        new_data["start_date"] = start_date
+        new_data["end_date"] = end_date
+        return new_data
 
     

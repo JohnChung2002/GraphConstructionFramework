@@ -1,0 +1,879 @@
+
+logon Training Report (Epoch 1):
+              precision    recall  f1-score   support
+
+           0       0.50      0.99      0.66     53797
+           1       0.00      0.00      0.00     53797
+
+    accuracy                           0.49    107594
+   macro avg       0.25      0.49      0.33    107594
+weighted avg       0.25      0.49      0.33    107594
+
+
+device Training Report (Epoch 1):
+              precision    recall  f1-score   support
+
+           0       0.39      0.51      0.44     26056
+           1       0.29      0.20      0.24     26056
+
+    accuracy                           0.36     52112
+   macro avg       0.34      0.36      0.34     52112
+weighted avg       0.34      0.36      0.34     52112
+
+
+http Training Report (Epoch 1):
+              precision    recall  f1-score   support
+
+           0       0.54      0.42      0.47   1780340
+           1       0.52      0.64      0.58   1780340
+
+    accuracy                           0.53   3560680
+   macro avg       0.53      0.53      0.52   3560680
+weighted avg       0.53      0.53      0.52   3560680
+
+
+file Training Report (Epoch 1):
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00     28206
+           1       0.00      0.00      0.00         2
+
+    accuracy                           1.00     28208
+   macro avg       0.50      0.50      0.50     28208
+weighted avg       1.00      1.00      1.00     28208
+
+
+logon Training Report (Epoch 2):
+              precision    recall  f1-score   support
+
+           0       0.76      0.69      0.72     53797
+           1       0.72      0.78      0.75     53797
+
+    accuracy                           0.74    107594
+   macro avg       0.74      0.74      0.73    107594
+weighted avg       0.74      0.74      0.73    107594
+
+
+device Training Report (Epoch 2):
+              precision    recall  f1-score   support
+
+           0       0.73      0.43      0.54     26056
+           1       0.60      0.84      0.70     26056
+
+    accuracy                           0.64     52112
+   macro avg       0.66      0.64      0.62     52112
+weighted avg       0.66      0.64      0.62     52112
+
+
+http Training Report (Epoch 2):
+              precision    recall  f1-score   support
+
+           0       0.65      0.24      0.35   1780340
+           1       0.53      0.87      0.66   1780340
+
+    accuracy                           0.56   3560680
+   macro avg       0.59      0.56      0.51   3560680
+weighted avg       0.59      0.56      0.51   3560680
+
+
+file Training Report (Epoch 2):
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00     28206
+           1       0.00      0.00      0.00         2
+
+    accuracy                           1.00     28208
+   macro avg       0.50      0.50      0.50     28208
+weighted avg       1.00      1.00      1.00     28208
+
+
+logon Training Report (Epoch 3):
+              precision    recall  f1-score   support
+
+           0       0.99      0.53      0.69     53797
+           1       0.68      0.99      0.81     53797
+
+    accuracy                           0.76    107594
+   macro avg       0.84      0.76      0.75    107594
+weighted avg       0.84      0.76      0.75    107594
+
+
+device Training Report (Epoch 3):
+              precision    recall  f1-score   support
+
+           0       0.77      0.47      0.58     26056
+           1       0.62      0.86      0.72     26056
+
+    accuracy                           0.67     52112
+   macro avg       0.70      0.67      0.65     52112
+weighted avg       0.70      0.67      0.65     52112
+
+
+http Training Report (Epoch 3):
+              precision    recall  f1-score   support
+
+           0       0.58      0.37      0.45   1780340
+           1       0.54      0.73      0.62   1780340
+
+    accuracy                           0.55   3560680
+   macro avg       0.56      0.55      0.54   3560680
+weighted avg       0.56      0.55      0.54   3560680
+
+
+file Training Report (Epoch 3):
+              precision    recall  f1-score   support
+
+           0       1.00      0.96      0.98     28206
+           1       0.00      1.00      0.00         2
+
+    accuracy                           0.96     28208
+   macro avg       0.50      0.98      0.49     28208
+weighted avg       1.00      0.96      0.98     28208
+
+
+logon Training Report (Epoch 4):
+              precision    recall  f1-score   support
+
+           0       1.00      0.50      0.67     53797
+           1       0.67      1.00      0.80     53797
+
+    accuracy                           0.75    107594
+   macro avg       0.83      0.75      0.73    107594
+weighted avg       0.83      0.75      0.73    107594
+
+
+device Training Report (Epoch 4):
+              precision    recall  f1-score   support
+
+           0       0.79      0.50      0.61     26056
+           1       0.63      0.87      0.73     26056
+
+    accuracy                           0.68     52112
+   macro avg       0.71      0.68      0.67     52112
+weighted avg       0.71      0.68      0.67     52112
+
+
+http Training Report (Epoch 4):
+              precision    recall  f1-score   support
+
+           0       0.62      0.46      0.53   1780340
+           1       0.57      0.72      0.64   1780340
+
+    accuracy                           0.59   3560680
+   macro avg       0.60      0.59      0.58   3560680
+weighted avg       0.60      0.59      0.58   3560680
+
+
+file Training Report (Epoch 4):
+              precision    recall  f1-score   support
+
+           0       1.00      0.88      0.94     28206
+           1       0.00      1.00      0.00         2
+
+    accuracy                           0.88     28208
+   macro avg       0.50      0.94      0.47     28208
+weighted avg       1.00      0.88      0.94     28208
+
+
+logon Training Report (Epoch 5):
+              precision    recall  f1-score   support
+
+           0       1.00      0.49      0.66     53797
+           1       0.66      1.00      0.80     53797
+
+    accuracy                           0.75    107594
+   macro avg       0.83      0.75      0.73    107594
+weighted avg       0.83      0.75      0.73    107594
+
+
+device Training Report (Epoch 5):
+              precision    recall  f1-score   support
+
+           0       0.80      0.51      0.62     26056
+           1       0.64      0.87      0.74     26056
+
+    accuracy                           0.69     52112
+   macro avg       0.72      0.69      0.68     52112
+weighted avg       0.72      0.69      0.68     52112
+
+
+http Training Report (Epoch 5):
+              precision    recall  f1-score   support
+
+           0       0.64      0.52      0.57   1780340
+           1       0.60      0.71      0.65   1780340
+
+    accuracy                           0.61   3560680
+   macro avg       0.62      0.61      0.61   3560680
+weighted avg       0.62      0.61      0.61   3560680
+
+
+file Training Report (Epoch 5):
+              precision    recall  f1-score   support
+
+           0       1.00      0.86      0.93     28206
+           1       0.00      1.00      0.00         2
+
+    accuracy                           0.86     28208
+   macro avg       0.50      0.93      0.46     28208
+weighted avg       1.00      0.86      0.93     28208
+
+
+logon Training Report (Epoch 6):
+              precision    recall  f1-score   support
+
+           0       1.00      0.50      0.66     53797
+           1       0.67      1.00      0.80     53797
+
+    accuracy                           0.75    107594
+   macro avg       0.83      0.75      0.73    107594
+weighted avg       0.83      0.75      0.73    107594
+
+
+device Training Report (Epoch 6):
+              precision    recall  f1-score   support
+
+           0       0.81      0.52      0.63     26056
+           1       0.64      0.88      0.74     26056
+
+    accuracy                           0.70     52112
+   macro avg       0.73      0.70      0.69     52112
+weighted avg       0.73      0.70      0.69     52112
+
+
+http Training Report (Epoch 6):
+              precision    recall  f1-score   support
+
+           0       0.65      0.55      0.60   1780340
+           1       0.61      0.70      0.65   1780340
+
+    accuracy                           0.63   3560680
+   macro avg       0.63      0.63      0.63   3560680
+weighted avg       0.63      0.63      0.63   3560680
+
+
+file Training Report (Epoch 6):
+              precision    recall  f1-score   support
+
+           0       1.00      0.84      0.92     28206
+           1       0.00      1.00      0.00         2
+
+    accuracy                           0.84     28208
+   macro avg       0.50      0.92      0.46     28208
+weighted avg       1.00      0.84      0.92     28208
+
+
+logon Training Report (Epoch 7):
+              precision    recall  f1-score   support
+
+           0       1.00      0.50      0.67     53797
+           1       0.67      1.00      0.80     53797
+
+    accuracy                           0.75    107594
+   macro avg       0.83      0.75      0.73    107594
+weighted avg       0.83      0.75      0.73    107594
+
+
+device Training Report (Epoch 7):
+              precision    recall  f1-score   support
+
+           0       0.81      0.52      0.63     26056
+           1       0.65      0.88      0.74     26056
+
+    accuracy                           0.70     52112
+   macro avg       0.73      0.70      0.69     52112
+weighted avg       0.73      0.70      0.69     52112
+
+
+http Training Report (Epoch 7):
+              precision    recall  f1-score   support
+
+           0       0.65      0.57      0.61   1780340
+           1       0.62      0.70      0.66   1780340
+
+    accuracy                           0.63   3560680
+   macro avg       0.64      0.63      0.63   3560680
+weighted avg       0.64      0.63      0.63   3560680
+
+
+file Training Report (Epoch 7):
+              precision    recall  f1-score   support
+
+           0       1.00      0.84      0.91     28206
+           1       0.00      1.00      0.00         2
+
+    accuracy                           0.84     28208
+   macro avg       0.50      0.92      0.46     28208
+weighted avg       1.00      0.84      0.91     28208
+
+
+logon Training Report (Epoch 8):
+              precision    recall  f1-score   support
+
+           0       0.99      0.51      0.67     53797
+           1       0.67      1.00      0.80     53797
+
+    accuracy                           0.75    107594
+   macro avg       0.83      0.75      0.73    107594
+weighted avg       0.83      0.75      0.73    107594
+
+
+device Training Report (Epoch 8):
+              precision    recall  f1-score   support
+
+           0       0.81      0.53      0.64     26056
+           1       0.65      0.88      0.75     26056
+
+    accuracy                           0.70     52112
+   macro avg       0.73      0.70      0.69     52112
+weighted avg       0.73      0.70      0.69     52112
+
+
+http Training Report (Epoch 8):
+              precision    recall  f1-score   support
+
+           0       0.66      0.58      0.62   1780340
+           1       0.63      0.70      0.66   1780340
+
+    accuracy                           0.64   3560680
+   macro avg       0.64      0.64      0.64   3560680
+weighted avg       0.64      0.64      0.64   3560680
+
+
+file Training Report (Epoch 8):
+              precision    recall  f1-score   support
+
+           0       1.00      0.83      0.91     28206
+           1       0.00      1.00      0.00         2
+
+    accuracy                           0.83     28208
+   macro avg       0.50      0.92      0.45     28208
+weighted avg       1.00      0.83      0.91     28208
+
+
+logon Training Report (Epoch 9):
+              precision    recall  f1-score   support
+
+           0       0.99      0.51      0.67     53797
+           1       0.67      0.99      0.80     53797
+
+    accuracy                           0.75    107594
+   macro avg       0.83      0.75      0.74    107594
+weighted avg       0.83      0.75      0.74    107594
+
+
+device Training Report (Epoch 9):
+              precision    recall  f1-score   support
+
+           0       0.81      0.53      0.64     26056
+           1       0.65      0.88      0.75     26056
+
+    accuracy                           0.70     52112
+   macro avg       0.73      0.70      0.69     52112
+weighted avg       0.73      0.70      0.69     52112
+
+
+http Training Report (Epoch 9):
+              precision    recall  f1-score   support
+
+           0       0.66      0.59      0.63   1780340
+           1       0.63      0.70      0.66   1780340
+
+    accuracy                           0.65   3560680
+   macro avg       0.65      0.65      0.65   3560680
+weighted avg       0.65      0.65      0.65   3560680
+
+
+file Training Report (Epoch 9):
+              precision    recall  f1-score   support
+
+           0       1.00      0.82      0.90     28206
+           1       0.00      1.00      0.00         2
+
+    accuracy                           0.82     28208
+   macro avg       0.50      0.91      0.45     28208
+weighted avg       1.00      0.82      0.90     28208
+
+
+logon Training Report (Epoch 10):
+              precision    recall  f1-score   support
+
+           0       0.98      0.52      0.68     53797
+           1       0.67      0.99      0.80     53797
+
+    accuracy                           0.75    107594
+   macro avg       0.83      0.75      0.74    107594
+weighted avg       0.83      0.75      0.74    107594
+
+
+device Training Report (Epoch 10):
+              precision    recall  f1-score   support
+
+           0       0.81      0.53      0.64     26056
+           1       0.65      0.88      0.75     26056
+
+    accuracy                           0.71     52112
+   macro avg       0.73      0.71      0.70     52112
+weighted avg       0.73      0.71      0.70     52112
+
+
+http Training Report (Epoch 10):
+              precision    recall  f1-score   support
+
+           0       0.66      0.60      0.63   1780340
+           1       0.64      0.69      0.66   1780340
+
+    accuracy                           0.65   3560680
+   macro avg       0.65      0.65      0.65   3560680
+weighted avg       0.65      0.65      0.65   3560680
+
+
+file Training Report (Epoch 10):
+              precision    recall  f1-score   support
+
+           0       1.00      0.82      0.90     28206
+           1       0.00      1.00      0.00         2
+
+    accuracy                           0.82     28208
+   macro avg       0.50      0.91      0.45     28208
+weighted avg       1.00      0.82      0.90     28208
+
+
+logon Training Report (Epoch 11):
+              precision    recall  f1-score   support
+
+           0       0.98      0.52      0.68     53797
+           1       0.67      0.99      0.80     53797
+
+    accuracy                           0.75    107594
+   macro avg       0.82      0.75      0.74    107594
+weighted avg       0.82      0.75      0.74    107594
+
+
+device Training Report (Epoch 11):
+              precision    recall  f1-score   support
+
+           0       0.82      0.54      0.65     26056
+           1       0.66      0.88      0.75     26056
+
+    accuracy                           0.71     52112
+   macro avg       0.74      0.71      0.70     52112
+weighted avg       0.74      0.71      0.70     52112
+
+
+http Training Report (Epoch 11):
+              precision    recall  f1-score   support
+
+           0       0.66      0.61      0.64   1780340
+           1       0.64      0.69      0.66   1780340
+
+    accuracy                           0.65   3560680
+   macro avg       0.65      0.65      0.65   3560680
+weighted avg       0.65      0.65      0.65   3560680
+
+
+file Training Report (Epoch 11):
+              precision    recall  f1-score   support
+
+           0       1.00      0.82      0.90     28206
+           1       0.00      1.00      0.00         2
+
+    accuracy                           0.82     28208
+   macro avg       0.50      0.91      0.45     28208
+weighted avg       1.00      0.82      0.90     28208
+
+
+logon Training Report (Epoch 12):
+              precision    recall  f1-score   support
+
+           0       0.97      0.52      0.68     53797
+           1       0.67      0.99      0.80     53797
+
+    accuracy                           0.76    107594
+   macro avg       0.82      0.76      0.74    107594
+weighted avg       0.82      0.76      0.74    107594
+
+
+device Training Report (Epoch 12):
+              precision    recall  f1-score   support
+
+           0       0.82      0.54      0.65     26056
+           1       0.66      0.88      0.75     26056
+
+    accuracy                           0.71     52112
+   macro avg       0.74      0.71      0.70     52112
+weighted avg       0.74      0.71      0.70     52112
+
+
+http Training Report (Epoch 12):
+              precision    recall  f1-score   support
+
+           0       0.67      0.61      0.64   1780340
+           1       0.64      0.69      0.67   1780340
+
+    accuracy                           0.65   3560680
+   macro avg       0.65      0.65      0.65   3560680
+weighted avg       0.65      0.65      0.65   3560680
+
+
+file Training Report (Epoch 12):
+              precision    recall  f1-score   support
+
+           0       1.00      0.82      0.90     28206
+           1       0.00      1.00      0.00         2
+
+    accuracy                           0.82     28208
+   macro avg       0.50      0.91      0.45     28208
+weighted avg       1.00      0.82      0.90     28208
+
+
+logon Training Report (Epoch 13):
+              precision    recall  f1-score   support
+
+           0       0.97      0.53      0.68     53797
+           1       0.68      0.98      0.80     53797
+
+    accuracy                           0.76    107594
+   macro avg       0.82      0.76      0.74    107594
+weighted avg       0.82      0.76      0.74    107594
+
+
+device Training Report (Epoch 13):
+              precision    recall  f1-score   support
+
+           0       0.82      0.54      0.65     26056
+           1       0.66      0.88      0.75     26056
+
+    accuracy                           0.71     52112
+   macro avg       0.74      0.71      0.70     52112
+weighted avg       0.74      0.71      0.70     52112
+
+
+http Training Report (Epoch 13):
+              precision    recall  f1-score   support
+
+           0       0.66      0.62      0.64   1780340
+           1       0.64      0.69      0.66   1780340
+
+    accuracy                           0.65   3560680
+   macro avg       0.65      0.65      0.65   3560680
+weighted avg       0.65      0.65      0.65   3560680
+
+
+file Training Report (Epoch 13):
+              precision    recall  f1-score   support
+
+           0       1.00      0.82      0.90     28206
+           1       0.00      1.00      0.00         2
+
+    accuracy                           0.82     28208
+   macro avg       0.50      0.91      0.45     28208
+weighted avg       1.00      0.82      0.90     28208
+
+
+logon Training Report (Epoch 14):
+              precision    recall  f1-score   support
+
+           0       0.97      0.53      0.69     53797
+           1       0.68      0.98      0.80     53797
+
+    accuracy                           0.76    107594
+   macro avg       0.82      0.76      0.74    107594
+weighted avg       0.82      0.76      0.74    107594
+
+
+device Training Report (Epoch 14):
+              precision    recall  f1-score   support
+
+           0       0.82      0.54      0.65     26056
+           1       0.66      0.88      0.75     26056
+
+    accuracy                           0.71     52112
+   macro avg       0.74      0.71      0.70     52112
+weighted avg       0.74      0.71      0.70     52112
+
+
+http Training Report (Epoch 14):
+              precision    recall  f1-score   support
+
+           0       0.66      0.62      0.64   1780340
+           1       0.64      0.69      0.66   1780340
+
+    accuracy                           0.65   3560680
+   macro avg       0.65      0.65      0.65   3560680
+weighted avg       0.65      0.65      0.65   3560680
+
+
+file Training Report (Epoch 14):
+              precision    recall  f1-score   support
+
+           0       1.00      0.82      0.90     28206
+           1       0.00      1.00      0.00         2
+
+    accuracy                           0.82     28208
+   macro avg       0.50      0.91      0.45     28208
+weighted avg       1.00      0.82      0.90     28208
+
+
+logon Training Report (Epoch 15):
+              precision    recall  f1-score   support
+
+           0       0.97      0.53      0.69     53797
+           1       0.68      0.98      0.80     53797
+
+    accuracy                           0.76    107594
+   macro avg       0.82      0.76      0.74    107594
+weighted avg       0.82      0.76      0.74    107594
+
+
+device Training Report (Epoch 15):
+              precision    recall  f1-score   support
+
+           0       0.82      0.54      0.65     26056
+           1       0.66      0.88      0.75     26056
+
+    accuracy                           0.71     52112
+   macro avg       0.74      0.71      0.70     52112
+weighted avg       0.74      0.71      0.70     52112
+
+
+http Training Report (Epoch 15):
+              precision    recall  f1-score   support
+
+           0       0.66      0.62      0.64   1780340
+           1       0.65      0.68      0.66   1780340
+
+    accuracy                           0.65   3560680
+   macro avg       0.66      0.65      0.65   3560680
+weighted avg       0.66      0.65      0.65   3560680
+
+
+file Training Report (Epoch 15):
+              precision    recall  f1-score   support
+
+           0       1.00      0.82      0.90     28206
+           1       0.00      1.00      0.00         2
+
+    accuracy                           0.82     28208
+   macro avg       0.50      0.91      0.45     28208
+weighted avg       1.00      0.82      0.90     28208
+
+
+logon Training Report (Epoch 16):
+              precision    recall  f1-score   support
+
+           0       0.96      0.54      0.69     53797
+           1       0.68      0.98      0.80     53797
+
+    accuracy                           0.76    107594
+   macro avg       0.82      0.76      0.75    107594
+weighted avg       0.82      0.76      0.75    107594
+
+
+device Training Report (Epoch 16):
+              precision    recall  f1-score   support
+
+           0       0.82      0.54      0.66     26056
+           1       0.66      0.88      0.75     26056
+
+    accuracy                           0.71     52112
+   macro avg       0.74      0.71      0.71     52112
+weighted avg       0.74      0.71      0.71     52112
+
+
+http Training Report (Epoch 16):
+              precision    recall  f1-score   support
+
+           0       0.66      0.63      0.65   1780340
+           1       0.65      0.68      0.66   1780340
+
+    accuracy                           0.65   3560680
+   macro avg       0.66      0.65      0.65   3560680
+weighted avg       0.66      0.65      0.65   3560680
+
+
+file Training Report (Epoch 16):
+              precision    recall  f1-score   support
+
+           0       1.00      0.82      0.90     28206
+           1       0.00      1.00      0.00         2
+
+    accuracy                           0.82     28208
+   macro avg       0.50      0.91      0.45     28208
+weighted avg       1.00      0.82      0.90     28208
+
+
+logon Training Report (Epoch 17):
+              precision    recall  f1-score   support
+
+           0       0.96      0.54      0.69     53797
+           1       0.68      0.98      0.80     53797
+
+    accuracy                           0.76    107594
+   macro avg       0.82      0.76      0.75    107594
+weighted avg       0.82      0.76      0.75    107594
+
+
+device Training Report (Epoch 17):
+              precision    recall  f1-score   support
+
+           0       0.82      0.55      0.66     26056
+           1       0.66      0.88      0.76     26056
+
+    accuracy                           0.71     52112
+   macro avg       0.74      0.71      0.71     52112
+weighted avg       0.74      0.71      0.71     52112
+
+
+http Training Report (Epoch 17):
+              precision    recall  f1-score   support
+
+           0       0.66      0.63      0.65   1780340
+           1       0.65      0.68      0.66   1780340
+
+    accuracy                           0.65   3560680
+   macro avg       0.65      0.65      0.65   3560680
+weighted avg       0.65      0.65      0.65   3560680
+
+
+file Training Report (Epoch 17):
+              precision    recall  f1-score   support
+
+           0       1.00      0.82      0.90     28206
+           1       0.00      1.00      0.00         2
+
+    accuracy                           0.82     28208
+   macro avg       0.50      0.91      0.45     28208
+weighted avg       1.00      0.82      0.90     28208
+
+
+logon Training Report (Epoch 18):
+              precision    recall  f1-score   support
+
+           0       0.96      0.54      0.69     53797
+           1       0.68      0.98      0.80     53797
+
+    accuracy                           0.76    107594
+   macro avg       0.82      0.76      0.75    107594
+weighted avg       0.82      0.76      0.75    107594
+
+
+device Training Report (Epoch 18):
+              precision    recall  f1-score   support
+
+           0       0.82      0.55      0.66     26056
+           1       0.66      0.88      0.76     26056
+
+    accuracy                           0.71     52112
+   macro avg       0.74      0.71      0.71     52112
+weighted avg       0.74      0.71      0.71     52112
+
+
+http Training Report (Epoch 18):
+              precision    recall  f1-score   support
+
+           0       0.66      0.63      0.65   1780340
+           1       0.65      0.68      0.66   1780340
+
+    accuracy                           0.65   3560680
+   macro avg       0.65      0.65      0.65   3560680
+weighted avg       0.65      0.65      0.65   3560680
+
+
+file Training Report (Epoch 18):
+              precision    recall  f1-score   support
+
+           0       1.00      0.82      0.90     28206
+           1       0.00      1.00      0.00         2
+
+    accuracy                           0.82     28208
+   macro avg       0.50      0.91      0.45     28208
+weighted avg       1.00      0.82      0.90     28208
+
+
+logon Training Report (Epoch 19):
+              precision    recall  f1-score   support
+
+           0       0.96      0.54      0.69     53797
+           1       0.68      0.98      0.80     53797
+
+    accuracy                           0.76    107594
+   macro avg       0.82      0.76      0.75    107594
+weighted avg       0.82      0.76      0.75    107594
+
+
+device Training Report (Epoch 19):
+              precision    recall  f1-score   support
+
+           0       0.82      0.55      0.66     26056
+           1       0.66      0.88      0.76     26056
+
+    accuracy                           0.72     52112
+   macro avg       0.74      0.72      0.71     52112
+weighted avg       0.74      0.72      0.71     52112
+
+
+http Training Report (Epoch 19):
+              precision    recall  f1-score   support
+
+           0       0.66      0.63      0.65   1780340
+           1       0.65      0.68      0.66   1780340
+
+    accuracy                           0.65   3560680
+   macro avg       0.65      0.65      0.65   3560680
+weighted avg       0.65      0.65      0.65   3560680
+
+
+file Training Report (Epoch 19):
+              precision    recall  f1-score   support
+
+           0       1.00      0.82      0.90     28206
+           1       0.00      1.00      0.00         2
+
+    accuracy                           0.82     28208
+   macro avg       0.50      0.91      0.45     28208
+weighted avg       1.00      0.82      0.90     28208
+
+
+logon Training Report (Epoch 20):
+              precision    recall  f1-score   support
+
+           0       0.96      0.54      0.69     53797
+           1       0.68      0.98      0.80     53797
+
+    accuracy                           0.76    107594
+   macro avg       0.82      0.76      0.75    107594
+weighted avg       0.82      0.76      0.75    107594
+
+
+device Training Report (Epoch 20):
+              precision    recall  f1-score   support
+
+           0       0.82      0.55      0.66     26056
+           1       0.66      0.88      0.76     26056
+
+    accuracy                           0.72     52112
+   macro avg       0.74      0.72      0.71     52112
+weighted avg       0.74      0.72      0.71     52112
+
+
+http Training Report (Epoch 20):
+              precision    recall  f1-score   support
+
+           0       0.66      0.63      0.65   1780340
+           1       0.65      0.67      0.66   1780340
+
+    accuracy                           0.65   3560680
+   macro avg       0.65      0.65      0.65   3560680
+weighted avg       0.65      0.65      0.65   3560680
+
+
+file Training Report (Epoch 20):
+              precision    recall  f1-score   support
+
+           0       1.00      0.82      0.90     28206
+           1       0.00      1.00      0.00         2
+
+    accuracy                           0.82     28208
+   macro avg       0.50      0.91      0.45     28208
+weighted avg       1.00      0.82      0.90     28208

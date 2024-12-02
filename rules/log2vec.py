@@ -1,4 +1,4 @@
-import concurrent.futures
+from .utils import rule_wrapper, all_subsets
 from datetime import timedelta
 from tqdm import tqdm
 
@@ -22,16 +22,26 @@ def next_edge_associate(today_data, next_day_data, edges):
     edges[f"{data2['log_type']}_associate_{data4['log_type']}"][0].append(data2['node'])
     edges[f"{data2['log_type']}_associate_{data4['log_type']}"][1].append(data4['node'])
 
-def process_rule_1(today_data, edges):
+@rule_wrapper({1})
+def process_rule_1(today_data, edges, **kwargs):
     for j in range(1, len(today_data)):
         edge_associate(today_data, j, edges)
 
-def process_rule_2(today_data, pc, edges):
+@rule_wrapper({2, 3})
+def process_rule_2_3(today_data, pc_encodings, reverse_logon_activity_encodings, reverse_device_activity_encodings, edges, **kwargs):
+    rule_set = kwargs.get("rule_set", [])
+    for pc in pc_encodings:
+        process_rule_2(today_data, pc, edges, rule_set=rule_set)
+        process_rule_3(today_data, pc, reverse_logon_activity_encodings, reverse_device_activity_encodings, edges, rule_set=rule_set)
+
+@rule_wrapper({2})
+def process_rule_2(today_data, pc, edges, **kwargs):
     same_pc_data = today_data[today_data["pc"] == pc]
     for j in range(1, len(same_pc_data)):
         edge_associate(same_pc_data, j, edges)
 
-def process_rule_3(today_data, pc, reverse_logon_activity_encodings, reverse_device_activity_encodings, edges):
+@rule_wrapper({3})
+def process_rule_3(today_data, pc, reverse_logon_activity_encodings, reverse_device_activity_encodings, edges, **kwargs):
     same_pc_data = today_data[today_data["pc"] == pc]
     for activity in reverse_logon_activity_encodings:
         logon_activity_df = same_pc_data[((same_pc_data["log_type"] == "logon") & (same_pc_data["activity"] == activity))]
@@ -51,15 +61,25 @@ def process_rule_3(today_data, pc, reverse_logon_activity_encodings, reverse_dev
     for j in range(1, len(same_day_file_user_data)):
         edge_associate(same_day_file_user_data, j, edges)
 
-def process_rule_4(today_data, next_day_data, edges):
+@rule_wrapper({4})
+def process_rule_4(today_data, next_day_data, edges, **kwargs):
     next_edge_associate(today_data, next_day_data, edges)
 
-def process_rule_5(today_data, next_day_data, pc, edges):
+@rule_wrapper({5, 6})
+def process_rule_5_6(today_data, next_day_data, pc_encodings, reverse_logon_activity_encodings, reverse_device_activity_encodings, edges, **kwargs):
+    rule_set = kwargs.get("rule_set", [])
+    for pc in pc_encodings:
+        process_rule_5(today_data, next_day_data, pc, edges, rule_set=rule_set)
+        process_rule_6(today_data, next_day_data, pc, reverse_logon_activity_encodings, reverse_device_activity_encodings, edges, rule_set=rule_set)
+
+@rule_wrapper({5})
+def process_rule_5(today_data, next_day_data, pc, edges, **kwargs):
     today_same_pc_data = today_data[today_data["pc"] == pc]
     next_day_same_pc_data = next_day_data[next_day_data["pc"] == pc]
     next_edge_associate(today_same_pc_data, next_day_same_pc_data, edges)
 
-def process_rule_6(today_data, next_day_data, pc, reverse_logon_activity_encodings, reverse_device_activity_encodings, edges):
+@rule_wrapper({6})
+def process_rule_6(today_data, next_day_data, pc, reverse_logon_activity_encodings, reverse_device_activity_encodings, edges, **kwargs):
     today_same_pc_data = today_data[today_data["pc"] == pc]
     next_day_same_pc_data = next_day_data[next_day_data["pc"] == pc]
 
@@ -81,7 +101,7 @@ def process_rule_6(today_data, next_day_data, pc, reverse_logon_activity_encodin
     next_day_file_user_data = next_day_same_pc_data[next_day_same_pc_data["log_type"] == "file"]
     next_edge_associate(today_file_user_data, next_day_file_user_data, edges)
 
-def process_day(date, chronological_df, pc_encodings, reverse_logon_activity_encodings, reverse_device_activity_encodings, delta):
+def process_day(rule_list, date, chronological_df, pc_encodings, reverse_logon_activity_encodings, reverse_device_activity_encodings, delta):
     # Initialize a local edges dictionary for this day's processing
     edges = {
         "logon_associate_logon" : [[], []],
@@ -105,21 +125,17 @@ def process_day(date, chronological_df, pc_encodings, reverse_logon_activity_enc
     today_data = chronological_df[chronological_df["date"].dt.date == date.date()].sort_values(by=['timestamp'])
 
     # Rule 1 - Chronological Activity
-    process_rule_1(today_data, edges)
+    process_rule_1(today_data, edges, rule_set=rule_list)
 
     # Rule 2, 3 - Same PC Activity, Same Operation, etc.
-    for pc in pc_encodings:
-        process_rule_2(today_data, pc, edges)
-        process_rule_3(today_data, pc, reverse_logon_activity_encodings, reverse_device_activity_encodings, edges)
+    process_rule_2_3(today_data, pc_encodings, reverse_logon_activity_encodings, reverse_device_activity_encodings, edges, rule_set=rule_list)
 
     # Rule 4, 5, 6 - Next day associations
     if (date + timedelta(days=1)) <= (date + timedelta(days=delta.days)):
         next_day_data = chronological_df[chronological_df["date"].dt.date == (date + timedelta(days=1)).date()].sort_values(by=['timestamp'])
-        process_rule_4(today_data, next_day_data, edges)
+        process_rule_4(today_data, next_day_data, edges, rule_set=rule_list)
 
-        for pc in pc_encodings:
-            process_rule_5(today_data, next_day_data, pc, edges)
-            process_rule_6(today_data, next_day_data, pc, reverse_logon_activity_encodings, reverse_device_activity_encodings, edges)
+        process_rule_5_6(today_data, next_day_data, pc_encodings, reverse_logon_activity_encodings, reverse_device_activity_encodings, edges, rule_set=rule_list)
 
     return edges
 
@@ -150,34 +166,52 @@ def merge_edges(edges_list):
 
     return merged_edges
 
-def process_rules(data):
+def process_rules_each(data, rule_list):
+    results = []
+
     chronological_df = data["chronological_df"]
     start_date = data["start_date"]
     end_date = data["end_date"]
     delta = end_date - start_date
     pc_encodings = data["encodings"]["pc"]
-    reverse_logon_activity_encodings = data["encodings"]["reverse_logon_activity"]
-    reverse_device_activity_encodings = data["encodings"]["reverse_device_activity"]
+    reverse_logon_activity_encodings = data["reverse_encodings"]["logon_activity"]
+    reverse_device_activity_encodings = data["reverse_encodings"]["device_activity"]
 
-    with concurrent.futures.ProcessPoolExecutor() as executor:
-        futures = []
-        for i in range(delta.days):
-            date = start_date + timedelta(days=i)
-            futures.append(executor.submit(
-                process_day,
-                date,
-                chronological_df,
-                pc_encodings,
-                reverse_logon_activity_encodings,
-                reverse_device_activity_encodings,
-                delta
-            ))
-
-        results = []
-        for future in tqdm(concurrent.futures.as_completed(futures), total=len(futures), desc="Processing Days"):
-            results.append(future.result())
+    for i in tqdm(range(delta.days), desc="Processing Days for Rules"):
+        date = start_date + timedelta(days=i)
+        out = process_day(
+            rule_list,
+            date,
+            chronological_df,
+            pc_encodings,
+            reverse_logon_activity_encodings,
+            reverse_device_activity_encodings,
+            delta
+        )
+        results.append(out)
 
     # Merge edges from all days
     edges = merge_edges(results)
-
     return edges
+
+def process_rules(data):
+    rule_list = [i for i in range(1, 7)]
+    
+    subsets = all_subsets(rule_list)
+    print(f"Total number of unique subsets: {len(subsets)}")
+
+    if isinstance(data, list):
+        combination_list = []
+        for d in data:
+            combinations = {}
+            for subset in subsets:
+                temp = [str(i) for i in subset]
+                combinations["+".join(temp)] = process_rules_each(d, subset)
+            combination_list.append(combinations)
+        return combination_list
+    else:
+        combinations = {}
+        for subset in subsets:
+            temp = [str(i) for i in subset]
+            combinations["+".join(temp)] = process_rules_each(data, subset)
+        return combinations
