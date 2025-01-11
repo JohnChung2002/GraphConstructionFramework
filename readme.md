@@ -13,12 +13,13 @@ The flow of data should be as follows
 load_data -> preprocess_data -> rules -> graph -> model -> results
 
 You can run the script with 
-`python main.py --data_loader='path' --data_preprocessor='path' --edge_builder='path' --graph_builder='path' --model='path' --results='path'`
-- --data_loader and its subsequent path should be a file in the load_data folder
-- --data_preprocessor and its subsequent path should be a file in the preprocess_data folder
-- --edge_builder and its subsequent path should be a file in the rules folder
-- --graph_builder and its subsequent path should be a file in the graph folder
-- --model and its subsequent path should be a file in the model folder
-- --results can be any folder be it relative or absolute
+`python main.py`
+and modify the values in `main.py` as follows
+- data_loader and its subsequent path should be a file in the load_data folder
+- data_preprocessor and its subsequent path should be a file in the preprocess_data folder
+- edge_builder and its subsequent path should be a file in the rules folder
+- graph_builder and its subsequent path should be a file in the graph folder
+- model and its subsequent path should be a file in the model folder
+- results can be any folder be it relative or absolute
 
 The sample script is a example execution with a drafted model, which is not sufficiently trained yet.
