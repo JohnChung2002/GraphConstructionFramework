@@ -2,6 +2,17 @@ from evaluator import evaluator
 from datetime import datetime
 
 data_loader = "cert_r42"
+# data_loader_args = {
+#     "logon" : { "path" : "data/r4.2/logon.csv", "type" : "csv" },
+#     "device" : { "path" : "data/r4.2/device.csv", "type" : "csv" },
+#     "http" : { "path" : "data/r4.2/http.csv", "type" : "csv" },
+#     "file" : { "path" : "data/r4.2/file.csv", "type" : "csv" },
+#     "answers" : [
+#         "data/answers/r4.2-1",
+#         "data/answers/r4.2-2",
+#         "data/answers/r4.2-3"
+#     ]
+# }
 data_loader_args = {
     "logon" : { "path" : "/fred/oz382/packaged_dataset/CERT/r4.2/logon.feather", "type" : "feather" },
     "device" : { "path" : "/fred/oz382/packaged_dataset/CERT/r4.2/device.feather", "type" : "feather" },
